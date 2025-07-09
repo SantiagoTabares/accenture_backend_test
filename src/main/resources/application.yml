@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: todoapp
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: todo_db
+      auto-index-creation: true
+  webflux:
+    base-path: /api
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.accenture.todoapp: DEBUG
+
