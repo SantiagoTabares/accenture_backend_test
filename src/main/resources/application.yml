@@ -8,7 +8,7 @@ spring:
       database: todo_db
       auto-index-creation: true
   webflux:
-    base-path: /api
+    base-path: /api/v1
 
 server:
   port: 8080
