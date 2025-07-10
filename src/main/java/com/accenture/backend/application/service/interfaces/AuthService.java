@@ -1,4 +1,4 @@
-package com.accenture.backend.application.service;
+package com.accenture.backend.application.service.interfaces;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
 import com.accenture.backend.application.dto.response.JwtResponse;

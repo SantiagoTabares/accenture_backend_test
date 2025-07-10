@@ -1,9 +1,6 @@
 package com.accenture.backend.infrastructure;
 
 import com.accenture.backend.application.dto.request.CategoryRequest;
-import com.accenture.backend.application.dto.response.CategoryResponse;
-import com.accenture.backend.application.service.CategoryService;
-import com.accenture.backend.infrastructure.web.controller.CategoryController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

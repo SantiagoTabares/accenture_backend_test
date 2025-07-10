@@ -1,7 +1,7 @@
 package com.accenture.backend.infrastructure;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
-import com.accenture.backend.application.service.AuthService;
+import com.accenture.backend.application.service.interfaces.AuthService;
 import com.accenture.backend.infrastructure.web.controller.AuthController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

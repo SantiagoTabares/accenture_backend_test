@@ -1,13 +1,7 @@
 package com.accenture.backend.infrastructure.web.controller;
 
-import com.accenture.backend.application.dto.request.TaskRequest;
-import com.accenture.backend.application.dto.response.TaskResponse;
-import com.accenture.backend.application.service.TaskService;
 import com.accenture.backend.application.service.interfaces.ProductoService;
 import com.accenture.backend.domain.model.Producto;
-import com.accenture.backend.domain.model.Sucursal;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

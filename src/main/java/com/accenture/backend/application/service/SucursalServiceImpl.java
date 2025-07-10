@@ -1,14 +1,7 @@
 package com.accenture.backend.application.service;
 
 import com.accenture.backend.application.dto.request.SucursalRequest;
-import com.accenture.backend.application.dto.request.TaskRequest;
-import com.accenture.backend.application.dto.response.CategoryResponse;
-import com.accenture.backend.application.dto.response.TaskResponse;
 import com.accenture.backend.application.service.interfaces.SucursalService;
-import com.accenture.backend.application.service.interfaces.SucursalService;
-import com.accenture.backend.domain.model.Franchise;
-import com.accenture.backend.domain.model.Producto;
-import com.accenture.backend.domain.model.Sucursal;
 import com.accenture.backend.domain.model.Sucursal;
 import com.accenture.backend.domain.repository.ProductoRepository;
 import com.accenture.backend.domain.repository.SucursalRepository;

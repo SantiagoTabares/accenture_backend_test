@@ -1,11 +1,6 @@
-package com.accenture.to_do_List_backend.application.service;
+package com.accenture.backend.application.service;
 
-import com.accenture.to_do_List_backend.application.dto.request.TaskRequest;
-
-import com.accenture.to_do_List_backend.domain.model.Category;
-import com.accenture.to_do_List_backend.domain.model.Task;
-import com.accenture.to_do_List_backend.domain.repository.CategoryRepository;
-import com.accenture.to_do_List_backend.domain.repository.TaskRepository;
+import com.accenture.backend.domain.model.Franchise;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +12,7 @@ import reactor.test.StepVerifier;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class TaskServiceImplTest {
+class FranchiseServiceImplTest {
 
     private TaskRepository taskRepository;
     private CategoryRepository categoryRepository;
@@ -34,31 +29,31 @@ class TaskServiceImplTest {
 
     @Test
     void create_shouldReturnTaskResponse_whenCategoryExists() {
-        TaskRequest request = new TaskRequest("Test Task", "Description", false, "cat-1");
+        TaskRequest request = new TaskRequest("Test Franchise", "Description", false, "cat-1");
 
-        Task savedTask = new Task();
-        savedTask.setId("task-1");
-        savedTask.setTitle("Test Task");
-        savedTask.setDescription("Description");
-        savedTask.setCompleted(false);
-        savedTask.setCategory(category);
+        Franchise savedFranchise = new Franchise();
+        savedFranchise.setId("task-1");
+        savedFranchise.setTitle("Test Franchise");
+        savedFranchise.setDescription("Description");
+        savedFranchise.setCompleted(false);
+        savedFranchise.setCategory(category);
 
         when(categoryRepository.findById("cat-1")).thenReturn(Mono.just(category));
-        when(taskRepository.save(any(Task.class))).thenReturn(Mono.just(savedTask));
+        when(taskRepository.save(any(Franchise.class))).thenReturn(Mono.just(savedFranchise));
 
         StepVerifier.create(taskService.create(request))
                 .expectNextMatches(response -> response.id().equals("task-1") &&
-                        response.title().equals("Test Task") &&
+                        response.title().equals("Test Franchise") &&
                         response.category().id().equals("cat-1"))
                 .verifyComplete();
 
         verify(categoryRepository).findById("cat-1");
-        verify(taskRepository).save(any(Task.class));
+        verify(taskRepository).save(any(Franchise.class));
     }
 
     @Test
     void create_shouldFail_whenCategoryDoesNotExist() {
-        TaskRequest request = new TaskRequest("Test Task", "Description", false, "invalid-id");
+        TaskRequest request = new TaskRequest("Test Franchise", "Description", false, "invalid-id");
 
         when(categoryRepository.findById("invalid-id")).thenReturn(Mono.empty());
 
@@ -75,25 +70,25 @@ class TaskServiceImplTest {
     @Test
     void update_shouldReturnUpdatedTask() {
         String taskId = "task-1";
-        Task existingTask = new Task();
-        existingTask.setId(taskId);
-        existingTask.setTitle("Old Title");
-        existingTask.setDescription("Old Description");
-        existingTask.setCompleted(false);
-        existingTask.setCategory(category);
+        Franchise existingFranchise = new Franchise();
+        existingFranchise.setId(taskId);
+        existingFranchise.setTitle("Old Title");
+        existingFranchise.setDescription("Old Description");
+        existingFranchise.setCompleted(false);
+        existingFranchise.setCategory(category);
 
         TaskRequest updateRequest = new TaskRequest("Updated", "New Desc", true, "cat-1");
 
-        Task updatedTask = new Task();
-        updatedTask.setId(taskId);
-        updatedTask.setTitle("Updated");
-        updatedTask.setDescription("New Desc");
-        updatedTask.setCompleted(true);
-        updatedTask.setCategory(category);
+        Franchise updatedFranchise = new Franchise();
+        updatedFranchise.setId(taskId);
+        updatedFranchise.setTitle("Updated");
+        updatedFranchise.setDescription("New Desc");
+        updatedFranchise.setCompleted(true);
+        updatedFranchise.setCategory(category);
 
-        when(taskRepository.findById(taskId)).thenReturn(Mono.just(existingTask));
+        when(taskRepository.findById(taskId)).thenReturn(Mono.just(existingFranchise));
         when(categoryRepository.findById("cat-1")).thenReturn(Mono.just(category));
-        when(taskRepository.save(any(Task.class))).thenReturn(Mono.just(updatedTask));
+        when(taskRepository.save(any(Franchise.class))).thenReturn(Mono.just(updatedFranchise));
 
         StepVerifier.create(taskService.update(taskId, updateRequest))
                 .expectNextMatches(task -> task.id().equals(taskId) &&
@@ -117,15 +112,15 @@ class TaskServiceImplTest {
 
     @Test
     void findById_shouldReturnTask() {
-        Task task = new Task();
-        task.setId("task-1");
-        task.setTitle("Test");
-        task.setCategory(category);
+        Franchise franchise = new Franchise();
+        franchise.setId("franchise-1");
+        franchise.setTitle("Test");
+        franchise.setCategory(category);
 
-        when(taskRepository.findById("task-1")).thenReturn(Mono.just(task));
+        when(taskRepository.findById("franchise-1")).thenReturn(Mono.just(franchise));
 
-        StepVerifier.create(taskService.findById("task-1"))
-                .expectNextMatches(t -> t.id().equals("task-1"))
+        StepVerifier.create(taskService.findById("franchise-1"))
+                .expectNextMatches(t -> t.id().equals("franchise-1"))
                 .verifyComplete();
     }
 
@@ -140,12 +135,12 @@ class TaskServiceImplTest {
 
     @Test
     void findAll_shouldReturnTasks() {
-        Task task = new Task();
-        task.setId("1");
-        task.setTitle("Title");
-        task.setCategory(category);
+        Franchise franchise = new Franchise();
+        franchise.setId("1");
+        franchise.setTitle("Title");
+        franchise.setCategory(category);
 
-        when(taskRepository.findAll()).thenReturn(Flux.just(task));
+        when(taskRepository.findAll()).thenReturn(Flux.just(franchise));
 
         StepVerifier.create(taskService.findAll())
                 .expectNextCount(1)
@@ -164,12 +159,12 @@ class TaskServiceImplTest {
 
     @Test
     void findByCategory_shouldReturnTasks() {
-        Task task = new Task();
-        task.setId("1");
-        task.setCategory(category);
+        Franchise franchise = new Franchise();
+        franchise.setId("1");
+        franchise.setCategory(category);
 
         when(categoryRepository.findById("cat-1")).thenReturn(Mono.just(category));
-        when(taskRepository.findByCategory(category)).thenReturn(Flux.just(task));
+        when(taskRepository.findByCategory(category)).thenReturn(Flux.just(franchise));
 
         StepVerifier.create(taskService.findByCategory("cat-1"))
                 .expectNextCount(1)

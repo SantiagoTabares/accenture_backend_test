@@ -3,7 +3,7 @@ package com.accenture.backend.infrastructure.web.controller;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
 import com.accenture.backend.application.dto.response.JwtResponse;
-import com.accenture.backend.application.service.AuthService;
+import com.accenture.backend.application.service.interfaces.AuthService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -2,6 +2,7 @@ package com.accenture.backend.application.service;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
 import com.accenture.backend.application.dto.response.JwtResponse;
+import com.accenture.backend.application.service.interfaces.AuthService;
 import com.accenture.backend.domain.model.User;
 import com.accenture.backend.domain.repository.UserRepository;
 import com.accenture.backend.infrastructure.util.JwtUtil;

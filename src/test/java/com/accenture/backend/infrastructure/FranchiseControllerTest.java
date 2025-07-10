@@ -1,11 +1,5 @@
-package com.accenture.to_do_List_backend.infrastructure;
+package com.accenture.backend.infrastructure;
 
-import com.accenture.to_do_List_backend.application.dto.request.TaskRequest;
-import com.accenture.to_do_List_backend.application.dto.response.CategoryResponse;
-import com.accenture.to_do_List_backend.application.dto.response.TaskResponse;
-import com.accenture.to_do_List_backend.application.service.TaskService;
-
-import com.accenture.to_do_List_backend.infrastructure.web.controller.TaskController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +11,7 @@ import reactor.core.publisher.Mono;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-class TaskControllerTest {
+class FranchiseControllerTest {
 
     private TaskService taskService;
     private WebTestClient webTestClient;

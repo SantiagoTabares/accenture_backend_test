@@ -1,8 +1,6 @@
 package com.accenture.backend.application.service;
 
 import com.accenture.backend.application.dto.request.CategoryRequest;
-import com.accenture.backend.domain.model.Category;
-import com.accenture.backend.domain.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

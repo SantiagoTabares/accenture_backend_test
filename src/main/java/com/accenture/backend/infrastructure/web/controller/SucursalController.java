@@ -1,10 +1,7 @@
 package com.accenture.backend.infrastructure.web.controller;
 
 import com.accenture.backend.application.dto.request.SucursalRequest;
-import com.accenture.backend.application.dto.response.CategoryResponse;
 import com.accenture.backend.application.service.interfaces.SucursalService;
-import com.accenture.backend.application.service.interfaces.SucursalService;
-import com.accenture.backend.domain.model.Sucursal;
 import com.accenture.backend.domain.model.Sucursal;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
