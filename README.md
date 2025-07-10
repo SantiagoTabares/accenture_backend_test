@@ -54,7 +54,7 @@ El proyecto contiene un archivo `docker-compose.yml` que define:
 1. **Clonar el repositorio**:
 
 ```bash
-git clone https://github.com/tu-usuario/to-do_List_backend.git
+git clone https://github.com/SantiagoTabares/to-do_List_backend.git
 cd to-do_List_backend
 ```
 
