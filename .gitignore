@@ -1,8 +1,9 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Ignora todo el target excepto el .jar
+target/*
+!target/to-do_List_backend-0.0.1-SNAPSHOT.jar
+
+# También puedes permitir la carpeta target si solo necesitas ese .jar
+# !target/
 
 ### STS ###
 .apt_generated

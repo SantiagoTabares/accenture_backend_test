@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Component
 public class JwtUtil {
+    // Esta clave se deja aqui porque es una prueba tecnica, en ambiente real debe estar en un archivo de configuracion .
     private static final String SECRET_KEY = "clave_super_segura_para_firmar_token_12345678901234567890";
     private static final long EXPIRATION_TIME = 3600_000; // 1 hora
 
