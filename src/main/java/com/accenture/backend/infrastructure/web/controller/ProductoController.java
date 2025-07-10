@@ -5,6 +5,7 @@ import com.accenture.backend.application.dto.response.TaskResponse;
 import com.accenture.backend.application.service.TaskService;
 import com.accenture.backend.application.service.interfaces.ProductoService;
 import com.accenture.backend.domain.model.Producto;
+import com.accenture.backend.domain.model.Sucursal;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -52,6 +53,12 @@ public class ProductoController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
+    @GetMapping
+    public Flux<Producto> findAll() {
+        return productoService.obtenerProductos();
+    }
+
 
 
 }
