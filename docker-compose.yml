@@ -12,10 +12,10 @@ services:
     networks:
       - backend
 
-  todoapp:
+  to_do_List_backend:
     build:
       context: .
-    container_name: todoapp
+    container_name: to_do_List_backend
     depends_on:
       - mongodb
     ports:

@@ -1,0 +1,24 @@
+package com.accenture.to_do_List_backend.application.mapper;
+
+import com.accenture.to_do_List_backend.application.dto.request.TaskRequest;
+import com.accenture.to_do_List_backend.application.dto.response.CategoryResponse;
+import com.accenture.to_do_List_backend.application.dto.response.TaskResponse;
+import com.accenture.to_do_List_backend.domain.model.Category;
+import com.accenture.to_do_List_backend.domain.model.Task;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+@Mapper(componentModel = "spring")
+public interface TaskMapper {
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "completed", source = "request.completed")
+    Task toEntity(TaskRequest request, Category category);
+
+    @Mapping(target = "category", expression = "java(toCategoryResponse(task.getCategory()))")
+    TaskResponse toResponse(Task task);
+
+    default CategoryResponse toCategoryResponse(Category category) {
+        return new CategoryResponse(category.getId(), category.getName());
+    }
+}

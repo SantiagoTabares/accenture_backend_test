@@ -1,12 +1,11 @@
 spring:
   application:
-    name: todoapp
+    name: to-do_List_backend
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/todo_db}
       auto-index-creation: true
-  webflux:
-    base-path: /api/v1
+
 
 server:
   port: 8080
@@ -15,11 +14,6 @@ logging:
   level:
     root: INFO
     org.springframework.web: DEBUG
-    com.accenture.todoapp: DEBUG
+    com.accenture.do_List_backend: DEBUG
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-  api-docs:
-    path: /v3/api-docs
 
