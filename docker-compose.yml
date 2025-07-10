@@ -12,10 +12,10 @@ services:
     networks:
       - backend
 
-  to_do_List_backend:
+  to_do_list_backend:
     build:
       context: .
-    container_name: to_do_List_backend
+    container_name: to_do_list_backend
     depends_on:
       - mongodb
     ports:
