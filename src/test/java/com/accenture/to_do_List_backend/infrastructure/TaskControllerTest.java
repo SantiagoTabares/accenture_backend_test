@@ -4,7 +4,7 @@ import com.accenture.to_do_List_backend.application.dto.request.TaskRequest;
 import com.accenture.to_do_List_backend.application.dto.response.CategoryResponse;
 import com.accenture.to_do_List_backend.application.dto.response.TaskResponse;
 import com.accenture.to_do_List_backend.application.service.TaskService;
-import com.accenture.to_do_List_backend.domain.model.Task;
+
 import com.accenture.to_do_List_backend.infrastructure.web.controller.TaskController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ class TaskControllerTest {
         when(taskService.create(any())).thenReturn(Mono.just(response));
 
         webTestClient.post()
-                .uri("/tasks")
+                .uri("/api/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -57,7 +57,7 @@ class TaskControllerTest {
         when(taskService.update(Mockito.eq(id), any())).thenReturn(Mono.just(response));
 
         webTestClient.put()
-                .uri("/tasks/{id}", id)
+                .uri("/api/v1/tasks/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -74,7 +74,7 @@ class TaskControllerTest {
         when(taskService.findAll()).thenReturn(Flux.just(response));
 
         webTestClient.get()
-                .uri("/tasks")
+                .uri("/api/v1/tasks")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(TaskResponse.class)
@@ -91,7 +91,7 @@ class TaskControllerTest {
         when(taskService.findById(id)).thenReturn(Mono.just(response));
 
         webTestClient.get()
-                .uri("/tasks/{id}", id)
+                .uri("/api/v1/tasks/{id}", id)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(TaskResponse.class)
@@ -107,7 +107,7 @@ class TaskControllerTest {
         when(taskService.findByCategory(categoryId)).thenReturn(Flux.just(response));
 
         webTestClient.get()
-                .uri("/tasks/category/{categoryId}", categoryId)
+                .uri("/api/v1/tasks/category/{categoryId}", categoryId)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(TaskResponse.class)
@@ -121,7 +121,7 @@ class TaskControllerTest {
         when(taskService.delete(id)).thenReturn(Mono.empty());
 
         webTestClient.delete()
-                .uri("/tasks/{id}", id)
+                .uri("/api/v1/tasks/{id}", id)
                 .exchange()
                 .expectStatus().isNoContent();
     }

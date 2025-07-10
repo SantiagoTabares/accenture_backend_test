@@ -6,7 +6,6 @@ import com.accenture.to_do_List_backend.application.dto.response.CategoryRespons
 import com.accenture.to_do_List_backend.domain.model.Category;
 import com.accenture.to_do_List_backend.domain.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
