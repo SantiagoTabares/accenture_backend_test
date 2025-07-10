@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: to-do_List_backend
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/todo_db}
+      auto-index-creation: true
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.accenture.do_List_backend: DEBUG
+
+
