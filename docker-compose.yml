@@ -12,16 +12,16 @@ services:
     networks:
       - backend
 
-  to_do_list_backend:
+  accenturebackendtest:
     build:
       context: .
-    container_name: to_do_list_backend
+    container_name: accenturebackendtest
     depends_on:
       - mongodb
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/todo_db
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/franquicia_db
     networks:
       - backend
 

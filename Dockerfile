@@ -5,7 +5,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copia el JAR generado por Maven (asegúrate de que el nombre sea correcto)
-COPY target/to-do_List_backend-0.0.1-SNAPSHOT.jar app.jar
+COPY target/accentureBackendTest-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto de la aplicación
 EXPOSE 8080

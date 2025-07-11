@@ -18,9 +18,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("To-Do List API")
+                        .title("FRANQUICIAS API")
                         .version("1.0")
-                        .description("API para gestionar tareas con autenticación JWT"))
+                        .description("API Reactiva con autenticación JWT para gestionar franquicias, sucursales y productos."))
                 .addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_NAME))
                 .components(new Components()
                         .addSecuritySchemes(SECURITY_SCHEME_NAME,

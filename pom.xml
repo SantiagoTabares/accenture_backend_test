@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.accenture</groupId>
-	<artifactId>to-do_List_backend</artifactId>
+	<artifactId>accentureBackendTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>to-do_List_backend</name>
-	<description>Technical test: To-Do List Application</description>
+	<name>accentureBackendTest</name>
+	<description>Technical test: Application backend</description>
 	<url/>
 	<licenses>
 		<license/>
