@@ -29,9 +29,10 @@ public class JwtUtil {
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpirationTime()))
-                .signWith(SignatureAlgorithm.HS512, jwtProperties.getSecretKey())
+                .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
     }
+
 
     public String extractUsername(String token) {
         return Jwts.parserBuilder()
