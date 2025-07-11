@@ -1,11 +1,16 @@
 spring:
   application:
-    name: to-do_List_backend
+    name: backend
   data:
     mongodb:
-      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/todo_db}
+#      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/franquicia_db}
+      uri: mongodb+srv://satabaresmo:YcjxybuN0bvUVHIm@cluster0.gvgk2wb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       auto-index-creation: true
+      database: franquicia_db
 
+jwt:
+  secret-key: DvAjrLe8dVmfKZ9eoxBNV7+pEVD2V8NHX0QKIVFQd7qS9tVOPmnmcTP4WmfKj8Aj3fWWOl4yFKqz9i+hbyAaZg==
+  expiration-time: 3600000
 
 server:
   port: 8080

@@ -1,17 +1,17 @@
-# Usa una imagen base liviana con JDK 21
+# Etapa 1: Construcción con Maven
+FROM maven:3.9-eclipse-temurin-21-alpine AS build
+WORKDIR /accenture_backend_test
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Verificamos qué archivos se generaron
+RUN ls -la /accenture_backend_test/target/
+
+# Etapa 2: Imagen final
 FROM eclipse-temurin:21-jdk-alpine
-
-# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
-
-# Copia el JAR generado por Maven (asegúrate de que el nombre sea correcto)
-COPY target/to-do_List_backend-0.0.1-SNAPSHOT.jar app.jar
-
-# Expone el puerto de la aplicación
+# Copiamos cualquier archivo JAR
+COPY --from=build /accenture_backend_test/target/*.jar app.jar
 EXPOSE 8080
-
-# Configura variables de entorno opcionales (como el perfil)
-ENV SPRING_PROFILES_ACTIVE=default
-
-# Comando de inicio de la aplicación
-ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

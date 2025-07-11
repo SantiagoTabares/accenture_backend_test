@@ -1,4 +1,4 @@
-# To-Do List Backend - Prueba Técnica
+# Franquicia Backend - Prueba Técnica
 
 ## 📋 Descripción
 Backend reactivo para gestión de tareas desarrollado con:
@@ -40,7 +40,7 @@ Se sigue Clean Architecture para garantizar:
 ### ✅ Requisitos previos
 
 - Tener instalado [Docker](https://www.docker.com/get-started) y [Docker Compose](https://docs.docker.com/compose/).
-- Verificar que el puerto `8080` (backend) y `27017` (MongoDB) estén libres.
+- Verificar que el puerto `8080` (backend) y `27017` (MongoDB para version en local) estén libres.
 
 ### 📂 Estructura relevante
 
@@ -58,16 +58,25 @@ git clone https://github.com/SantiagoTabares/to-do_List_backend.git
 cd to-do_List_backend
 ```
 
-**NOTA:** Es necesario tener instalado Java 17 y Maven para compilar el proyecto, para probar se agrega el .jar en el repo  de necesitar cambiarlo se ejecuta:
+Para este proyecto se tiene varias opciones de despliegue, puedes elegir entre:
 
-```bash
- ./mvnw clean install -U
-```
+- Versión con MongoDB en MongoDB Atlas (Cloud)
+- Versión con MongoDB en un contenedor 
 
-2. **Construir y levantar servicios**:
 
+**Versión con MongoDB en MongoDB Atlas (Cloud):**
 ```bash
 docker-compose up --build
+```
+
+**Versión con MongoDB en un contenedor:**
+
+Se utiliza el archivo `docker-compose.locadb.yml` que se encuentra en la raíz del proyecto.
+
+Construir y levantar servicios**:
+
+```bash
+docker-compose -f docker-compose.localdb.yml up -d
 ```
 
 Para detener los servicios, usa:
@@ -78,6 +87,7 @@ docker-compose down
 3. **Verificar que todo esté funcionando**:
 
    - Accede a la API en `http://localhost:8080/webjars/swagger-ui/index.html`.
+
 
 ## Funcionamiento de la API
 
@@ -92,25 +102,18 @@ Con el token obtenido se agrega en 'Authorize' en la parte superior, puedes acce
 
 ![img_2.png](img_2.png)
 
-**Nota:** El SECRET_KEY esta en el repositorio ya que es una prueba tecnica, en un entorno real se recomienda almacenarlo de forma segura y no exponerlo en el código fuente.
+**Nota:** El SECRET_KEY esta en el repositorio ya que es una prueba tecnica, en un entorno real se recomienda almacenarlo de forma segura y no exponerlo en el código fuente, al igual que las credenciales de la base de datos.
 
-Ya con eso se podrán probar todas las funcionalidades de la API, como crear, actualizar y eliminar tareas y  categorías.
 
+Ya con eso se podrán probar todas las funcionalidades de la API
 
 
 ## 🧪 Pruebas unitarias
-Las pruebas fueron desarrolladas con JUnit 5 y Mockito, enfocadas en los servicios y controladores principales:
+Se realia un ejemplo de pruebas unitarias con JUnit 5 y Mockito, enfocadas en los servicios y controladores principales:
 - AuthControllerTest
 
 - AuthServiceImplTest
 
-- CategoryControllerTest
-
-- CategoryServiceImplTest
-
-- TaskControllerTest
-
-- TaskServiceImplTest
 
 Las pruebas unitarias están implementadas utilizando JUnit 5 y Mockito. Para ejecutarlas, puedes usar el siguiente comando:
 
@@ -118,17 +121,23 @@ Las pruebas unitarias están implementadas utilizando JUnit 5 y Mockito. Para ej
 ./mvnw test
 ```
 
-![img.png](img.png)
+![img_3.png](img_3.png)
 
 
 ## 🔧 Posibles mejoras
-- **Implementar paginación y ordenamiento** en las listas de tareas y categorías.
+- **Implementar paginación y ordenamiento** en las listas de franquicias, sucursales y productos.
 - **Agregar validaciones más robustas** en los DTOs y servicios.
+- **Implementar un sistema de roles y permisos** para controlar el acceso a los recursos.
+- **Mejora en la implementación de manejo de excepciones global** para una mejor gestión de errores.
+- **Crear Dto y mappers para todos los procesos de la API para evitar utilizar modelos directamente en los controladores.**
 - **Implementar pruebas de integración** para verificar el flujo completo.
-- **Mejorar la seguridad** con roles y permisos más granulares.
 - **Optimizar consultas a MongoDB** para mejorar el rendimiento en grandes volúmenes de datos.
-- **Uso de mapper para DTOs** para evitar código repetitivo en conversiones.
-- **Cambiar logica para que las tareas esten rellacionadas a cada usuario**
+
+## Despliegue en la nube
+
+Actualmente se encuentra desplegado en la nube de railway:
+
+https://backendtestaccenture.up.railway.app/webjars/swagger-ui/index.html#/Authentication/login
 
 ## 📞 Contacto
 Para cualquier duda o consulta, puedes contactarme a través de:
