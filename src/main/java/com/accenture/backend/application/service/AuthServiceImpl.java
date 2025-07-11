@@ -21,21 +21,19 @@ public class AuthServiceImpl implements AuthService {
     private final JwtUtil jwtUtil;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @Override
     public Mono<ResponseEntity<String>> register(LoginRequest request) {
         return userRepository.findByUsername(request.getUsername())
-                .flatMap(user -> Mono.just(ResponseEntity
-                        .status(HttpStatus.BAD_REQUEST)
-                        .body("Username already exists")))
-                .switchIfEmpty(
-                        userRepository.save(User.builder()
-                                        .username(request.getUsername())
-                                        .password(passwordEncoder.encode(request.getPassword()))
-                                        .build())
-                                .map(savedUser -> ResponseEntity
-                                        .status(HttpStatus.CREATED)
-                                        .body("User registered successfully"))
-                );
+                .flatMap(existingUser ->
+                        Mono.just(ResponseEntity.badRequest().body("Username already exists")))
+                .switchIfEmpty(Mono.defer(() -> {
+                    User newUser = User.builder()
+                            .username(request.getUsername())
+                            .password(passwordEncoder.encode(request.getPassword()))
+                            .build();
+                    return userRepository.save(newUser)
+                            .map(savedUser -> ResponseEntity.status(HttpStatus.CREATED)
+                                    .body("User registered successfully"));
+                }));
     }
 
     @Override
