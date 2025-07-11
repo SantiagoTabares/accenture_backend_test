@@ -1,10 +1,13 @@
 package com.accenture.backend.application.service;
 
 import com.accenture.backend.application.dto.request.FranquiciaRequest;
-import com.accenture.backend.application.dto.response.ProductoConSucursalResponse;
+
+import com.accenture.backend.application.dto.response.SucursalConProductoMaxResponse;
+
 import com.accenture.backend.application.service.interfaces.FranquiciaService;
 import com.accenture.backend.domain.model.Franquicia;
 
+import com.accenture.backend.domain.model.Producto;
 import com.accenture.backend.domain.repository.FranquiciaRepository;
 import com.accenture.backend.domain.repository.SucursalRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -64,8 +68,20 @@ public class FranquiciaServiceImpl implements FranquiciaService {
         return franquiciaRepository.findAll();
     }
 
-    @Override
-    public Flux<ProductoConSucursalResponse> obtenerProductosConMasStockPorSucursal(String franquiciaId) {
-        return null;
+
+    public Flux<SucursalConProductoMaxResponse> obtenerProductosConMasStockPorSucursal(String franquiciaId) {
+        return franquiciaRepository.findById(franquiciaId)
+                .flatMapMany(franquicia -> Flux.fromIterable(franquicia.getSucursales()))
+                .map(sucursal -> {
+                    Producto productoMax = sucursal.getProductos().stream()
+                            .max(Comparator.comparingInt(Producto::getStock))
+                            .orElse(null);
+
+                    return new SucursalConProductoMaxResponse(
+                            sucursal.getId(),
+                            sucursal.getNombre(),
+                            productoMax
+                    );
+                });
     }
 }

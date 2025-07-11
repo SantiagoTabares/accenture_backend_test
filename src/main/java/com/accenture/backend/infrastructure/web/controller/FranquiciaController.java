@@ -1,6 +1,7 @@
 package com.accenture.backend.infrastructure.web.controller;
 
 import com.accenture.backend.application.dto.request.FranquiciaRequest;
+import com.accenture.backend.application.dto.response.SucursalConProductoMaxResponse;
 import com.accenture.backend.application.service.interfaces.FranquiciaService;
 import com.accenture.backend.domain.model.Franquicia;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -53,6 +54,11 @@ public class FranquiciaController {
     @GetMapping
     public Flux<Franquicia> obtenerFranquicias() {
         return franquiciaService.obtenerFranquicias();
+    }
+
+    @GetMapping("/franquicia/{id}/sucursales-producto-max")
+    public Flux<SucursalConProductoMaxResponse> obtenerProductosMaxPorSucursal(@PathVariable("id") String id) {
+        return franquiciaService.obtenerProductosConMasStockPorSucursal(id);
     }
 
 

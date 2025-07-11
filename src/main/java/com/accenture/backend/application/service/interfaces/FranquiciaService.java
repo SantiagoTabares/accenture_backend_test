@@ -2,7 +2,8 @@ package com.accenture.backend.application.service.interfaces;
 
 
 import com.accenture.backend.application.dto.request.FranquiciaRequest;
-import com.accenture.backend.application.dto.response.ProductoConSucursalResponse;
+import com.accenture.backend.application.dto.response.SucursalConProductoMaxResponse;
+import com.accenture.backend.application.dto.response.SucursalesProductoMaxResponse;
 import com.accenture.backend.domain.model.Franquicia;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -13,5 +14,6 @@ public interface FranquiciaService {
      Mono<Void> eliminarFranquiciaPorId(String id);
      Mono<Franquicia> actualizarFranquiciaNombre(String id, String FranquiciaNombre);
      Flux<Franquicia> obtenerFranquicias();
-     Flux<ProductoConSucursalResponse> obtenerProductosConMasStockPorSucursal(String franquiciaId);
+     Flux<SucursalConProductoMaxResponse> obtenerProductosConMasStockPorSucursal(String franquiciaId);
+
 }

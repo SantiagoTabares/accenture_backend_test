@@ -1,11 +1,7 @@
 package com.accenture.backend.application.service;
 
-import com.accenture.backend.application.dto.response.ProductoConSucursalResponse;
-import com.accenture.backend.application.service.interfaces.FranquiciaService;
 import com.accenture.backend.application.service.interfaces.ProductoService;
-import com.accenture.backend.domain.model.Franquicia;
 import com.accenture.backend.domain.model.Producto;
-import com.accenture.backend.domain.repository.FranquiciaRepository;
 import com.accenture.backend.domain.repository.ProductoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
