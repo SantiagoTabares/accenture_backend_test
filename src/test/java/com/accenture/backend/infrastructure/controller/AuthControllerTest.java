@@ -1,7 +1,6 @@
 package com.accenture.backend.infrastructure.controller;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
-import com.accenture.backend.application.dto.response.JwtResponse;
 import com.accenture.backend.application.service.interfaces.AuthService;
 import com.accenture.backend.infrastructure.web.controller.AuthController;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -29,7 +27,7 @@ class AuthControllerTest {
     private static final String TEST_PASSWORD = "testPass123";
     private static final String SUCCESS_MESSAGE = "User registered successfully";
     private static final String USER_EXISTS_MESSAGE = "Username already exists";
-    private static final String AUTH_TOKEN = "mockAuthToken";
+
 
     @Mock
     private AuthService authService;

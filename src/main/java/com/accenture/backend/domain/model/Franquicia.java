@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "tasks")
+@Document(collection = "franquicia")
 public class Franquicia {
     @Id
     private String id;

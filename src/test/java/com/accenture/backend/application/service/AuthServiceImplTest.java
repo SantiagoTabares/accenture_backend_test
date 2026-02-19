@@ -1,17 +1,14 @@
 package com.accenture.backend.application.service;
 
 import com.accenture.backend.application.dto.request.LoginRequest;
-import com.accenture.backend.application.dto.response.JwtResponse;
 import com.accenture.backend.domain.model.User;
 import com.accenture.backend.domain.repository.UserRepository;
 import com.accenture.backend.infrastructure.util.JwtUtil;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;

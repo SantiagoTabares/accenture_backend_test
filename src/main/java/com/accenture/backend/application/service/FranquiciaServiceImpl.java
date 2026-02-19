@@ -55,11 +55,11 @@ public class FranquiciaServiceImpl implements FranquiciaService {
     }
 
     @Override
-    public Mono<Franquicia> actualizarFranquiciaNombre(String id, String FranquiciaNombre) {
+    public Mono<Franquicia> actualizarFranquiciaNombre(String id, String franquiciaNombre) {
         return franquiciaRepository.findById(id)
-                .flatMap(Franquicia -> {
-                    Franquicia.setNombre(FranquiciaNombre);
-                    return franquiciaRepository.save(Franquicia);
+                .flatMap(franquicia -> {
+                    franquicia.setNombre(franquiciaNombre);
+                    return franquiciaRepository.save(franquicia);
                 });
     }
 

@@ -49,11 +49,11 @@ public class SucursalServiceImpl implements SucursalService{
     }
 
     @Override
-    public Mono<Sucursal> actualizarSucursalNombre(String id, String SucursalNombre) {
+    public Mono<Sucursal> actualizarSucursalNombre(String id, String sucursalNombre) {
         return sucursalRepository.findById(id)
-                .flatMap(Sucursal -> {
-                    Sucursal.setNombre(SucursalNombre);
-                    return sucursalRepository.save(Sucursal);
+                .flatMap(sucursal -> {
+                    sucursal.setNombre(sucursalNombre);
+                    return sucursalRepository.save(sucursal);
                 });
     }
 

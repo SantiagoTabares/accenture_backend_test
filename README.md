@@ -71,12 +71,12 @@ docker-compose up --build
 
 **Versión con MongoDB en un contenedor:**
 
-Se utiliza el archivo `docker-compose.locadb.yml` que se encuentra en la raíz del proyecto.
+Se utiliza el archivo `docker-compose-locadb.yml` que se encuentra en la raíz del proyecto.
 
 Construir y levantar servicios**:
 
 ```bash
-docker-compose -f docker-compose.localdb.yml up -d
+docker-compose -f docker-compose-localdb.yml up -d
 ```
 
 Para detener los servicios, usa:
@@ -96,11 +96,11 @@ Desde la interfaz de Swagger, puedes los endpoints disponibles, pero se debe rea
 ### Autenticación
 Para autenticarte, utiliza el endpoint `/auth/register` para crear un usuario y luego `/auth/login` para obtener un token JWT. Este token se debe incluir en el header `Authorization` de las peticiones a los endpoints protegidos.:
 
-![img_1.png](img_1.png)
+![img_1.png](docs/img_1.png)
 
 Con el token obtenido se agrega en 'Authorize' en la parte superior, puedes acceder a los endpoints de tareas y categorías. Por ejemplo, para listar las tareas:
 
-![img_2.png](img_2.png)
+![img_2.png](docs/img_2.png)
 
 **Nota:** El SECRET_KEY esta en el repositorio ya que es una prueba tecnica, en un entorno real se recomienda almacenarlo de forma segura y no exponerlo en el código fuente, al igual que las credenciales de la base de datos.
 
@@ -121,10 +121,11 @@ Las pruebas unitarias están implementadas utilizando JUnit 5 y Mockito. Para ej
 ./mvnw test
 ```
 
-![img_3.png](img_3.png)
+![img_3.png](docs/img_3.png)
 
 
 ## 🔧 Posibles mejoras
+**Nota:** Las credenciales se incluyen en el código únicamente para efectos de la prueba técnica. En un entorno real, estas deben gestionarse mediante variables de entorno (por ejemplo, un archivo .env) o un gestor de secretos.
 - **Implementar paginación y ordenamiento** en las listas de franquicias, sucursales y productos.
 - **Agregar validaciones más robustas** en los DTOs y servicios.
 - **Implementar un sistema de roles y permisos** para controlar el acceso a los recursos.
@@ -132,12 +133,16 @@ Las pruebas unitarias están implementadas utilizando JUnit 5 y Mockito. Para ej
 - **Crear Dto y mappers para todos los procesos de la API para evitar utilizar modelos directamente en los controladores.**
 - **Implementar pruebas de integración** para verificar el flujo completo.
 - **Optimizar consultas a MongoDB** para mejorar el rendimiento en grandes volúmenes de datos.
+- **Validación de cobertura en las pruebas**
+- **Despliegue en nube AWS**
+- **Uso de DynamoDB**
 
 ## Despliegue en la nube
 
-Actualmente se encuentra desplegado en la nube de railway:
+Por facilidad se uyiliza la plataforma de nube de Railway, que es una plataforma PaaS, pensada para desplegar aplicaciones y bases de datos de forma rápida, sin tener que administrar servidores, redes ni infraestructura compleja. Solución sencilla y gratuita para una prueba técnica. 
 
-https://backendtestaccenture.up.railway.app/webjars/swagger-ui/index.html#/Authentication/login
+https://accenturebackendtest-production.up.railway.app/webjars/swagger-ui/index.html#
+
 
 ## 📞 Contacto
 Para cualquier duda o consulta, puedes contactarme a través de:
